@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python
 import math
 from PIL import Image
@@ -5,7 +6,7 @@ import matplotlib.pyplot as plt
 import cv2
 import numpy as np
 #np.set_printoptions(threshold=np.nan) #See all array value
-secret = "101101"
+secret = "101110"
 n = 2
 img = cv2.imread('Lena.bmp', cv2.IMREAD_GRAYSCALE)
 
@@ -31,6 +32,8 @@ for i in range(0,img_w):
         index = index + 1
 
 ##EMD Part
+print arrayste
+print arrayori
 secret_len = secret_len - 1
 for i in range(0,secret_len,n):
     EMD = float()
@@ -42,13 +45,13 @@ for i in range(0,secret_len,n):
     EMD = 0.0
     d = 0.0
     b = n
+    eachsecret = secret_binary[i:i+n] 
     for j in range(0,n):
         #eachsecret = eachsecret + (int(secret_binary[i+j])*pow(2,b-1))
-        eachsecret = eachsecret + str(secret_binary[i+j])
+        #eachsecret = eachsecret + str(secret_binary[i+j])
         #print int(secret_binary[i+j])
-        #print "EachSecret:",eachsecret
+        print "EachSecret:",eachsecret
         EMD = EMD + arrayori[i+j]*(1+j)
-        b = b - 1
     desecret = float(int(eachsecret,2))
     print desecret
     #d = (eachsecret-(EMD%modmath))%modmath
